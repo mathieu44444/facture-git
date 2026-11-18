@@ -8,6 +8,7 @@ public class Facture {
         afficherFacture("Client démonstration", 3);
         System.out.println("----------");
         afficherFacture("Client fidèle", 6);
+        // afficherFacture("Client test", 1);
     }
 
     static int calculerSousTotal(int quantite) {
@@ -22,7 +23,14 @@ public class Facture {
     }
 
     static int calculerTotal(int sousTotal) {
-        return sousTotal + calculerFraisLivraison(sousTotal) - RABAIS_FIDELITE;
+        int x = sousTotal + calculerFraisLivraison(sousTotal);
+        System.out.println("DEBUG x = " + x);
+        if (sousTotal > 100) {
+            x = x - 15;
+        } else {
+            x = x - RABAIS_FIDELITE;
+        }
+        return x;
     }
 
     static void afficherFacture(String client, int quantite) {
