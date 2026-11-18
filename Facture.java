@@ -8,7 +8,6 @@ public class Facture {
         afficherFacture("Client démonstration", 3);
         System.out.println("----------");
         afficherFacture("Client fidèle", 6);
-        // afficherFacture("Client test", 1);
     }
 
     static int calculerSousTotal(int quantite) {
