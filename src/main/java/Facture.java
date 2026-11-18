@@ -3,10 +3,14 @@ import com.google.gson.GsonBuilder;
 
 public class Facture {
     public static void main(String[] args) {
+        Configuration config = Configuration.depuisLeSysteme();
+        String url = config.lireObligatoire("compta.url");
         afficherFacture("Client démonstration", 3);
         System.out.println("----------");
         afficherFacture("Client fidèle", 6);
         System.out.println("----------");
+        System.out.println("Environnement : " + config.environnement());
+        System.out.println("Envoi (simulé) vers : " + url);
         System.out.println(exporterJson("Client fidèle", 6));
     }
 
