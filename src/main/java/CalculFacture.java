@@ -5,6 +5,9 @@ public class CalculFacture {
     static final int SEUIL_LIVRAISON_GRATUITE = 100;
 
     static int calculerSousTotal(int quantite) {
+        if (quantite < 1) {
+            throw new IllegalArgumentException("La quantité doit être d'au moins 1");
+        }
         return PRIX_UNITAIRE * quantite;
     }
 
