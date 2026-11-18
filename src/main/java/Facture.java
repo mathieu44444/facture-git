@@ -5,12 +5,14 @@ public class Facture {
     public static void main(String[] args) {
         Configuration config = Configuration.depuisLeSysteme();
         String url = config.lireObligatoire("compta.url");
+        String cle = config.lireObligatoire("compta.cle");
         afficherFacture("Client démonstration", 3);
         System.out.println("----------");
         afficherFacture("Client fidèle", 6);
         System.out.println("----------");
         System.out.println("Environnement : " + config.environnement());
         System.out.println("Envoi (simulé) vers : " + url);
+        System.out.println("Clé d'API : " + masquer(cle));
         System.out.println(exporterJson("Client fidèle", 6));
     }
 
@@ -30,5 +32,9 @@ public class Facture {
         ResumeFacture resume = new ResumeFacture(client, quantite, sousTotal, total);
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         return gson.toJson(resume);
+    }
+
+    static String masquer(String secret) {
+        return secret.substring(0, Math.min(4, secret.length())) + "****";
     }
 }
