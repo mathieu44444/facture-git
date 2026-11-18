@@ -1,26 +1,32 @@
 public class Facture {
+    static final int PRIX_UNITAIRE = 20;
+    static final int FRAIS_LIVRAISON = 5;
+    static final int RABAIS_FIDELITE = 10;
+
     public static void main(String[] args) {
-        // client 1
-        String client = "Client démonstration";
-        int prixUnitaire = 20;
-        int quantite = 3;
-        int fraisLivraison = 5;
-        int rabais = 10;
-        int sousTotal = prixUnitaire * quantite;
-        int total = sousTotal + fraisLivraison - rabais;
+        afficherFacture("Client démonstration", 3);
+        System.out.println("----------");
+        afficherFacture("Client fidèle", 6);
+    }
+
+    static int calculerSousTotal(int quantite) {
+        return PRIX_UNITAIRE * quantite;
+    }
+
+    static int calculerFraisLivraison() {
+        return FRAIS_LIVRAISON;
+    }
+
+    static int calculerTotal(int sousTotal) {
+        return sousTotal + calculerFraisLivraison() - RABAIS_FIDELITE;
+    }
+
+    static void afficherFacture(String client, int quantite) {
+        int sousTotal = calculerSousTotal(quantite);
+        int total = calculerTotal(sousTotal);
         System.out.println("Client : " + client);
-        System.out.println(quantite + " article(s) à " + prixUnitaire + " $");
+        System.out.println(quantite + " article(s) à " + PRIX_UNITAIRE + " $");
         System.out.println("Sous-total : " + sousTotal + " $");
         System.out.println("Total : " + total + " $");
-        System.out.println("----------");
-        // client 2 (copie du client 1)
-        String c2 = "Client fidèle";
-        int q2 = 6;
-        int st2 = 20 * q2;
-        int t = st2 + 5 - 10;
-        System.out.println("Client : " + c2);
-        System.out.println(q2 + " article(s) à " + 20 + " $");
-        System.out.println("Sous-total : " + st2 + " $");
-        System.out.println("Total : " + t + " $");
     }
 }
