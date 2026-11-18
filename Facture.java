@@ -22,7 +22,8 @@ public class Facture {
     }
 
     static int calculerTotal(int sousTotal) {
-        return sousTotal + calculerFraisLivraison(sousTotal) - RABAIS_FIDELITE;
+        int totalAvantRabais = sousTotal + calculerFraisLivraison(sousTotal);
+        return totalAvantRabais - RABAIS_FIDELITE;
     }
 
     static void afficherFacture(String client, int quantite) {
